@@ -1,4 +1,4 @@
-$exePath = "D:\xxx\rightClick.exe"
+$exePath = "D:\a\temp\rightClick.exe"
 
 #region 以管理员权限运行,UAC提权
 $currentWi = [Security.Principal.WindowsIdentity]::GetCurrent()
@@ -19,7 +19,7 @@ if( -not $currentWp.IsInRole([Security.Principal.WindowsBuiltInRole]::Administra
 # 文件的右键菜单
 reg.exe add hkcr\*\shell\Path /v SubCommands /t REG_SZ
 reg.exe add hkcr\*\shell\Path\shell\"File Name"\command /ve /t REG_SZ /d $exePath" name '%1' " /f
-reg.exe add hkcr\*\shell\Path\shell\"Full Path up(反斜杠)"\command /ve /t REG_SZ /d $exePath" pathu '%1 " /f
+reg.exe add hkcr\*\shell\Path\shell\"Full Path up(反斜杠)"\command /ve /t REG_SZ /d $exePath" pathu '%1' " /f
 reg.exe add hkcr\*\shell\Path\shell\"Full Path down(斜杠)"\command /ve /t REG_SZ /d $exePath" pathd '%1' " /f
 
 
